@@ -1,0 +1,7 @@
+{
+  "name": "deleteCategory",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

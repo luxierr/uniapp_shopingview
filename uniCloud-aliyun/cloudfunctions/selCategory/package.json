@@ -1,0 +1,7 @@
+{
+  "name": "selCategory",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

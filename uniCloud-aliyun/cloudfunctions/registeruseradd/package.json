@@ -1,0 +1,7 @@
+{
+  "name": "registeruseradd",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
