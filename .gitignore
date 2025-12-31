@@ -24,7 +24,6 @@ coverage
 .output
 
 # uni-app 特有
-/uniCloud/
 /.hbuilderx/
 /uni_modules/
 /unpackage/

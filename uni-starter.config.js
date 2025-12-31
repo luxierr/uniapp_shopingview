@@ -25,7 +25,7 @@ export default {
 		//应用logo
 		"logo": "/static/logo.png",
 		//公司名称
-		"company": "北京xx网络技术有限公司",
+		"company": "",
 		//口号
 		"slogan": "云端一体应用快速开发模版",
 		//应用的链接，用于分享到第三方平台和生成关于我们页的二维码
