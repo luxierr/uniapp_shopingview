@@ -59,7 +59,18 @@
 		// #endif
 		data() {
 			return {
+				balance: 0,
 				gridList: [{
+						"text": this.$t('mine.orders')||'我的订单',
+						"icon": "cart",
+						"event": 'goOrder'
+					},
+					{
+						"text": this.$t('mine.recharge')||'充值',
+						"icon": "money",
+						"event": 'goRecharge'
+					},
+					{
 						"text": this.$t('mine.showText'),
 						"icon": "chat"
 					},
@@ -156,7 +167,9 @@
 			})
 			//#endif
 		},
-		onShow() {},
+		onShow() {
+			this.fetchBalance()
+		},
 		computed: {
 			userInfo() {
 				return store.userInfo
@@ -262,6 +275,7 @@
 						const data = res.result.data[0];
 						let msg = '';
 						msg = data ? (this.$t('mine.currentScore')+ data.balance) : this.$t('mine.noScore');
+						this.balance = data ? data.balance : 0;
 						uni.showToast({
 							title: msg,
 							icon: 'none'
@@ -269,6 +283,16 @@
 					}).finally(()=>{
 						uni.hideLoading()
 					})
+			},
+			async fetchBalance(){
+				if(!this.userInfo) return;
+				try{
+					let res = await db.collection('uni-id-scores').where('\"user_id\" == $env.uid').field('balance').orderBy('create_date','desc').limit(1).get()
+					const data = res.result.data[0]
+					this.balance = data ? data.balance : 0
+				}catch(e){
+					console.error(e)
+				}
 			},
 			async share() {
 				let {result} = await db.collection('uni-id-users').where("'_id' == $cloudEnv_uid").field('my_invite_code').get()

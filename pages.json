@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"path": "pages/cart/cart",
+			"style": {
+				"navigationBarTitleText": "购物车"
+			}
+		},
+		{
 			"path": "pages/list/list",
 			"style": {
 				// #ifndef APP
@@ -258,6 +264,12 @@
 			"selectedIconPath": "static/tabbar/list_active.png",
 			"text": "列表"
 		}, 
+		{
+			"pagePath": "pages/cart/cart",
+			"iconPath": "/static/tabbar/car.png",
+			"selectedIconPath": "static/tabbar/car_active.png",
+			"text": "购物车"
+		},
 		// {
 		// 	"pagePath": "pages/grid/grid",
 		// 	"iconPath": "static/tabbar/grid.png",

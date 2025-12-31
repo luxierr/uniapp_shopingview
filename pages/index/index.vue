@@ -337,19 +337,25 @@
 					icon: 'none'
 				});
 
-				// 传递数量信息
-				const cartItem = {
-					goodsId: this.currentGoods._id,
-					quantity: this.selectedQuantity,
-					variant: this.selectedVariant,
-					...this.currentGoods
-				};
-
-				// TODO: 调用加入购物车接口，传入cartItem
-				uni.showToast({
-					title: `已加入${this.selectedQuantity}件到购物车`,
-					icon: 'success'
-				});
+				// 添加商品到购物车
+				uniCloud.callFunction({
+				  name: 'cart-operation',
+				  data: {
+				    action: 'add',
+				    params: {
+				      goodsId: '你的商品ID', // 如：1754118933236654
+				      quantity: 2 // 购买数量
+				    }
+				  }
+				}).then(res => {
+				  if (res.result.code === 0) {
+				    uni.showToast({ title: '添加购物车成功' })
+				  } else {
+				    uni.showToast({ title: res.result.msg, icon: 'none' })
+				  }
+				}).catch(err => {
+				  uni.showToast({ title: '网络异常', icon: 'none' })
+				})
 				this.showDetail = false;
 			},
 
