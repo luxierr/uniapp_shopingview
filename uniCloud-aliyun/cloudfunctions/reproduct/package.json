@@ -1,0 +1,7 @@
+{
+  "name": "reproduct",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

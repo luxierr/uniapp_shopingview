@@ -1,0 +1,7 @@
+{
+  "name": "delposts",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

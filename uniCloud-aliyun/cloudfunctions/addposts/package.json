@@ -1,0 +1,7 @@
+{
+  "name": "addposts",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
