@@ -13,6 +13,12 @@
 			}
 		},
 		{
+			"path": "pages/merchant/info",
+			"style": {
+		        "navigationBarTitleText": "商家日常"
+			}
+		},
+		{
 			"path": "pages/list/list",
 			"style": {
 				// #ifndef APP
@@ -276,6 +282,12 @@
 		// 	"selectedIconPath": "static/tabbar/grid_active.png",
 		// 	"text": "宫格"
 		// }, 
+		{
+		      "pagePath": "pages/merchant/info",
+		      "iconPath": "/static/tabbar/data.png",
+		      "selectedIconPath": "/static/tabbar/data_active.png",
+		      "text": "资讯"
+		},
 		{
 			"pagePath": "pages/ucenter/ucenter",
 			"iconPath": "static/tabbar/me.png",
