@@ -1,0 +1,146 @@
+{
+	"bsonType": "object",
+	"required": ["title", "content"],
+	"permission": {
+		"read": true,
+		"create": "'CREATE_OPENDB_ARTICLES' in auth.permission",
+		"update": "'UPDATE_OPENDB_ARTICLES' in auth.permission",
+		"delete": "'DELETE_OPENDB_ARTICLES' in auth.permission"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"title": {
+			"bsonType": "string",
+			"description": "推文标题",
+			"label": "标题",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"content": {
+			"bsonType": "string",
+			"description": "推文内容",
+			"label": "内容",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "textarea"
+			},
+			"componentForShow": {
+				"name": "textarea"
+			}
+		},
+		"cover": {
+			"bsonType": "string",
+			"description": "封面图片",
+			"label": "封面图",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-file-picker",
+				"props": {
+					"limit": 1,
+					"returnType": "string"
+				}
+			}
+		},
+		"author": {
+			"bsonType": "string",
+			"description": "作者",
+			"label": "作者",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"summary": {
+			"bsonType": "string",
+			"description": "摘要",
+			"label": "摘要",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "textarea"
+			},
+			"componentForShow": {
+				"name": "textarea"
+			}
+		},
+		"status": {
+			"bsonType": "int",
+			"description": "发布状态：0草稿，1已发布，2已下架",
+			"label": "状态",
+			"defaultValue": 0,
+			"enum": [
+				{
+					"text": "草稿",
+					"value": 0
+				},
+				{
+					"text": "已发布",
+					"value": 1
+				},
+				{
+					"text": "已下架",
+					"value": 2
+				}
+			],
+			"componentForEdit": {
+				"name": "uni-data-checkbox"
+			}
+		},
+		"publish_date": {
+			"bsonType": "timestamp",
+			"description": "发布时间",
+			"label": "发布时间",
+			"componentForEdit": {
+				"name": "uni-datetime-picker"
+			}
+		},
+		"sort": {
+			"bsonType": "int",
+			"description": "排序号，越大越靠前",
+			"label": "排序",
+			"defaultValue": 0,
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "number"
+				}
+			}
+		},
+		"view_count": {
+			"bsonType": "int",
+			"description": "浏览量",
+			"label": "浏览量",
+			"defaultValue": 0,
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "number",
+					"disabled": true
+				}
+			}
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"label": "创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			},
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		},
+		"update_date": {
+			"bsonType": "timestamp",
+			"label": "更新时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			},
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		}
+	}
+}

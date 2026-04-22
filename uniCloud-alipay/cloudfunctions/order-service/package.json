@@ -1,0 +1,7 @@
+{
+  "name": "order-service",
+  "version": "1.0.0",
+  "description": "订单服务云函数：物流查询、自动收货、订单状态管理",
+  "main": "index.js",
+  "dependencies": {}
+}

@@ -1,0 +1,139 @@
+{
+	"bsonType": "object",
+	"required": ["name", "price"],
+	"permission": {
+		"read": true,
+		"create": "'CREATE_OPENDB_GOODS' in auth.permission",
+		"update": "'UPDATE_OPENDB_GOODS' in auth.permission",
+		"delete": "'DELETE_OPENDB_GOODS' in auth.permission"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "商品名称",
+			"label": "商品名称",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"description": {
+			"bsonType": "string",
+			"description": "商品描述",
+			"label": "商品描述",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "textarea"
+			},
+			"componentForShow": {
+				"name": "textarea"
+			}
+		},
+		"price": {
+			"bsonType": "double",
+			"description": "售价",
+			"label": "售价",
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "digit"
+				}
+			}
+		},
+		"original_price": {
+			"bsonType": "double",
+			"description": "原价",
+			"label": "原价",
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "digit"
+				}
+			}
+		},
+		"stock": {
+			"bsonType": "int",
+			"description": "库存数量",
+			"label": "库存",
+			"defaultValue": 0,
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "number"
+				}
+			}
+		},
+		"category": {
+			"bsonType": "string",
+			"description": "商品分类",
+			"label": "分类",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"images": {
+			"bsonType": "array",
+			"description": "商品图片列表",
+			"label": "商品图片",
+			"arrayType": "file",
+			"componentForEdit": {
+				"name": "uni-file-picker"
+			}
+		},
+		"status": {
+			"bsonType": "int",
+			"description": "上架状态：0下架，1上架",
+			"label": "上架状态",
+			"defaultValue": 1,
+			"enum": [
+				{
+					"text": "下架",
+					"value": 0
+				},
+				{
+					"text": "上架",
+					"value": 1
+				}
+			],
+			"componentForEdit": {
+				"name": "uni-data-checkbox"
+			}
+		},
+		"sort": {
+			"bsonType": "int",
+			"description": "排序号，越大越靠前",
+			"label": "排序",
+			"defaultValue": 0,
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "number"
+				}
+			}
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"label": "创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			},
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		},
+		"update_date": {
+			"bsonType": "timestamp",
+			"label": "更新时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			},
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		}
+	}
+}

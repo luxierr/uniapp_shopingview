@@ -1,7 +1,0 @@
-{
-  "name": "updateCategory",
-  "dependencies": {},
-  "extensions": {
-    "uni-cloud-jql": {}
-  }
-}

@@ -1,0 +1,246 @@
+{
+	"bsonType": "object",
+	"required": ["order_no", "goods_id", "goods_name", "price", "quantity", "total_amount", "receiver_name", "receiver_phone", "address"],
+	"permission": {
+		"read": "doc.user_id == auth.uid || 'READ_OPENDB_ORDERS' in auth.permission",
+		"create": "'CREATE_OPENDB_ORDERS' in auth.permission || doc.user_id == auth.uid",
+		"update": "'UPDATE_OPENDB_ORDERS' in auth.permission || (doc.user_id == auth.uid && doc.status in [0,1])",
+		"delete": "'DELETE_OPENDB_ORDERS' in auth.permission"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"order_no": {
+			"bsonType": "string",
+			"description": "订单编号",
+			"label": "订单编号",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"disabled": true
+				}
+			}
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "下单用户ID",
+			"label": "用户ID",
+			"forceDefaultValue": {
+				"$env": "uid"
+			},
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"disabled": true
+				}
+			}
+		},
+		"goods_id": {
+			"bsonType": "string",
+			"description": "商品ID",
+			"label": "商品ID",
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"disabled": true
+				}
+			}
+		},
+		"goods_name": {
+			"bsonType": "string",
+			"description": "商品名称（快照）",
+			"label": "商品名称",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"disabled": true
+				}
+			}
+		},
+		"goods_image": {
+			"bsonType": "string",
+			"description": "商品图片（快照）",
+			"label": "商品图片",
+			"componentForEdit": {
+				"name": "image"
+			}
+		},
+		"price": {
+			"bsonType": "double",
+			"description": "商品单价",
+			"label": "单价",
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "digit",
+					"disabled": true
+				}
+			}
+		},
+		"quantity": {
+			"bsonType": "int",
+			"description": "购买数量",
+			"label": "数量",
+			"defaultValue": 1,
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "number",
+					"disabled": true
+				}
+			}
+		},
+		"total_amount": {
+			"bsonType": "double",
+			"description": "订单总金额",
+			"label": "总金额",
+			"componentForEdit": {
+				"name": "uni-easyinput",
+				"props": {
+					"type": "digit",
+					"disabled": true
+				}
+			}
+		},
+		"status": {
+			"bsonType": "int",
+			"description": "订单状态：0待付款，1待发货，2已发货，3已完成，4已取消",
+			"label": "订单状态",
+			"defaultValue": 0,
+			"enum": [
+				{
+					"text": "待付款",
+					"value": 0
+				},
+				{
+					"text": "待发货",
+					"value": 1
+				},
+				{
+					"text": "已发货",
+					"value": 2
+				},
+				{
+					"text": "已完成",
+					"value": 3
+				},
+				{
+					"text": "已取消",
+					"value": 4
+				}
+			],
+			"componentForEdit": {
+				"name": "uni-data-checkbox"
+			}
+		},
+		"receiver_name": {
+			"bsonType": "string",
+			"description": "收货人姓名",
+			"label": "收货人",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"receiver_phone": {
+			"bsonType": "string",
+			"description": "收货人电话",
+			"label": "联系电话",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"address": {
+			"bsonType": "string",
+			"description": "收货地址",
+			"label": "收货地址",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "textarea"
+			}
+		},
+		"remark": {
+			"bsonType": "string",
+			"description": "订单备注",
+			"label": "备注",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "textarea"
+			}
+		},
+		"tracking_no": {
+			"bsonType": "string",
+			"description": "物流单号",
+			"label": "物流单号",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"tracking_company": {
+			"bsonType": "string",
+			"description": "物流公司",
+			"label": "物流公司",
+			"trim": "both",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"pay_time": {
+			"bsonType": "timestamp",
+			"description": "支付时间",
+			"label": "支付时间",
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		},
+		"ship_time": {
+			"bsonType": "timestamp",
+			"description": "发货时间",
+			"label": "发货时间",
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		},
+		"complete_time": {
+			"bsonType": "timestamp",
+			"description": "完成时间",
+			"label": "完成时间",
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		},
+		"cancel_time": {
+			"bsonType": "timestamp",
+			"description": "取消时间",
+			"label": "取消时间",
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"label": "创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			},
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		},
+		"update_date": {
+			"bsonType": "timestamp",
+			"label": "更新时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			},
+			"componentForEdit": {
+				"name": "uni-dateformat"
+			}
+		}
+	}
+}
